@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/myimage">
+        <file>image/pic1.gif</file>
+        <file>image/pic2.jpeg</file>
+        <file>bg.png</file>
+        <file>image/2.ico</file>
+        <file>image/111.ico</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>data/number.txt</file>
+    </qresource>
+</RCC>

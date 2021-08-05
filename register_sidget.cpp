@@ -8,8 +8,11 @@
 #include <sstream>
 #include <QDir>
 #include <QMessageBox>
-using std::string;
+#include <QCoreApplication>
+using std::ifstream;
+using std::ofstream;
 using std::stringstream;
+using std::string;
 
 Register_sidget::Register_sidget(QWidget *parent, Widget* w) :
     QWidget(parent),
@@ -80,8 +83,16 @@ bool Register_sidget::regist_user()
     ui->caution_label->setText(QString(""));
     ui->caution_label2->setStyleSheet("color:black;");
     ui->caution_label2->setText(QString(""));
-    std::ifstream fi("/home/kevinkk/Desktop/self/qt_project/gobang/data/number.txt");
-    std::ofstream fo("/home/kevinkk/Desktop/self/qt_project/gobang/data/number.txt", std::ofstream::app);
+    string s_path = QCoreApplication::applicationDirPath().toStdString();
+    s_path += "/../gobang/data/number.txt";
+#if 1
+    std::cout << s_path << std::endl;
+    ifstream fi(s_path);
+    ofstream fo(s_path, ofstream::app);
+#else
+    ifstream fi("/home/kevinkk/Desktop/self/../self/qt_project/gobang/data/number.txt");
+    ofstream fo("/home/kevinkk/Desktop/self/qt_project/gobang/data/number.txt", ofstream::app);
+#endif
     string temp;
     string target;
     string passwd;

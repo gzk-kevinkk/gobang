@@ -12,7 +12,7 @@
 
 GameWindow::GameWindow(QWidget *parent, Widget *last) :
     QMainWindow(parent),
-    ui(new Ui::GameWindow), widget(last)
+    ui(new Ui::GameWindow), widget(last), clock(new ShapedClock())
 {
     ui->setupUi(this);
     ui->ReturnButton->installEventFilter(this);
@@ -73,6 +73,11 @@ GameWindow::GameWindow(QWidget *parent, Widget *last) :
 
 //    std::cout << QCoreApplication::applicationDirPath().toStdString() << std::endl;
 //    std::cout << QDir::currentPath().toStdString() << std::endl;
+
+    //ShapedClock
+    QVBoxLayout* clocklayout = new QVBoxLayout();
+    ui->clock_widget -> setLayout(clocklayout);
+    clocklayout->addWidget(clock);
 
 
 }

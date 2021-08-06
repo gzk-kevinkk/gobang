@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     player.cpp \
     register_sidget.cpp \
+    shapedclock.cpp \
     widget.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     gamewindow.h \
     player.h \
     register_sidget.h \
+    shapedclock.h \
     widget.h
 
 FORMS += \

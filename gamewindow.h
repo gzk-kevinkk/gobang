@@ -11,6 +11,8 @@ class Player;
 class Widget;
 class ChessBoard;
 
+#include "shapedclock.h"
+
 namespace Ui {
 class GameWindow;
 }
@@ -51,6 +53,8 @@ private:
     //Player
     Player* player_black;
     Player* player_white;
+    //ShapedCLock
+    ShapedClock* clock;
 };
 
 #endif // GAMEWINDOW_H

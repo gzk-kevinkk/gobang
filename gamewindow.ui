@@ -98,7 +98,22 @@
      <widget class="QWidget" name="board_widget" native="true"/>
     </item>
     <item>
-     <widget class="QWidget" name="player_widget" native="true"/>
+     <widget class="QWidget" name="player_widget" native="true">
+      <layout class="QVBoxLayout" name="verticalLayout_3" stretch="5,1,5,1">
+       <item>
+        <widget class="QWidget" name="widget" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_2" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_3" native="true"/>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_4" native="true"/>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
   </widget>

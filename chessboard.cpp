@@ -171,7 +171,8 @@ void ChessBoard::mousePressEvent(QMouseEvent* )
             cur_chess_y = cur_y_i;
             board[cur_x_i][cur_y_i]=1;
             judge();
-            player_white->start();
+            if(!over)
+                player_white->start();
         }
         else
         {
@@ -180,7 +181,8 @@ void ChessBoard::mousePressEvent(QMouseEvent* )
             cur_chess_y = cur_y_i;
             board[cur_x_i][cur_y_i]=2;
             judge();
-            player_black->start();
+            if(!over)
+                player_black->start();
         }
         cnt++;
         update();
@@ -271,10 +273,22 @@ void ChessBoard::judge()
             over = true;
             setMouseTracking(false);
             setCursor(Qt::ArrowCursor);
-            //emit game_over();
+            emit game_over();
             return;
         }
     }
+}
+
+//void ChessBoard::game_over()
+//{
+//    over = true;
+//    dropEnable = false;
+//    dropFlag = false;
+//}
+
+void ChessBoard::timelose()
+{
+
 }
 
 

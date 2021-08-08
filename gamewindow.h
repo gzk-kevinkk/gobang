@@ -12,6 +12,7 @@ class Widget;
 class ChessBoard;
 
 #include "shapedclock.h"
+#include "utimer.h"
 
 namespace Ui {
 class GameWindow;
@@ -55,6 +56,9 @@ private:
     Player* player_white;
     //ShapedCLock
     ShapedClock* clock;
+    //计时器
+    Utimer* timer_black;
+    Utimer* timer_white;
 };
 
 #endif // GAMEWINDOW_H

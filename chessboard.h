@@ -21,6 +21,10 @@ public:
     void judge(); //判断胜负
 
 signals:
+    void game_over();
+
+public slots:
+    void timelose();
 
 private:
     int board[15][15]; //棋局

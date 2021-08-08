@@ -2,8 +2,9 @@
 #define PLAYER_H
 #include "chessboard.h"
 class ChessBoard;
+#include <QObject>
 
-class Player
+class Player : public QObject
 {
 public:
     Player(int color, ChessBoard* chessboard);
@@ -21,10 +22,13 @@ protected:
 
 class HumanPlayer : public Player
 {
+    Q_OBJECT
 public:
     HumanPlayer(int color, ChessBoard* chessboard);
     void next();
-    inline void start();
+    void start();
+signals:
+    void player_turn();
 };
 
 #endif // PLAYER_H

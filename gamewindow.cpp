@@ -79,7 +79,20 @@ GameWindow::GameWindow(QWidget *parent, Widget *last) :
     ui->clock_widget -> setLayout(clocklayout);
     clocklayout->addWidget(clock);
 
+    //计时器
+    timer_black = new Utimer();
+    timer_white = new Utimer();
+    timer_black->arrange(ui->widget_2);
+    timer_white->arrange(ui->widget_4);
 
+    connect(timer_black, SIGNAL(timeout()), chessboard, SLOT(timelose()));
+    connect(timer_white, SIGNAL(timeout()), chessboard, SLOT(timelose()));
+    connect(player_black, SIGNAL(player_turn()), timer_black, SLOT(start()));
+    connect(player_black, SIGNAL(player_turn()), timer_white, SLOT(end()));
+    connect(player_white, SIGNAL(player_turn()), timer_white, SLOT(start()));
+    connect(player_white, SIGNAL(player_turn()), timer_black, SLOT(end()));
+    connect(chessboard, SIGNAL(game_over()), timer_black, SLOT(end()));
+    connect(chessboard, SIGNAL(game_over()), timer_white, SLOT(end()));
 }
 
 GameWindow::~GameWindow()

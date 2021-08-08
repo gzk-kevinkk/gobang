@@ -21,5 +21,6 @@ void HumanPlayer::next()
 void HumanPlayer::start()
 {
     chessboard->dropFlag = true;
+    emit player_turn();
 }
 

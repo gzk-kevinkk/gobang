@@ -195,9 +195,9 @@ Widget::reshow()
     if(register_window)
         delete(register_window);
     register_window = nullptr;
-//    if(game_window)
-//        delete(game_window);
-//    game_window = nullptr;
+    if(game_window)
+        delete(game_window);
+    game_window = nullptr;
     show();
 #if 0
     //game_window = nullptr;

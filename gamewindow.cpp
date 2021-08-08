@@ -99,6 +99,14 @@ GameWindow::GameWindow(QWidget *parent, Widget *last) :
 GameWindow::~GameWindow()
 {
     delete ui;
+    delete label;
+    delete action_group;
+    delete clock;
+    delete timer_black;
+    delete timer_white;
+    delete player_black;
+    delete player_white;
+    delete chessboard;
 }
 
 bool GameWindow::eventFilter(QObject *obj, QEvent *e)

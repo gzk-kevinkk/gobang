@@ -47,7 +47,7 @@ Register_sidget::Register_sidget(QWidget *parent, Widget* w) :
     ui->caution_label->setText(QString(""));
 
 
-    setAttribute(Qt::WA_DeleteOnClose,1);
+    //setAttribute(Qt::WA_DeleteOnClose,1);
 
 }
 
@@ -136,8 +136,9 @@ bool Register_sidget::regist_user()
 
 void Register_sidget::on_return_pushButton_clicked()
 {
-    login_window->reshow();
     close();
+    login_window->reshow();
+
 }
 
 

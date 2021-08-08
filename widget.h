@@ -25,6 +25,7 @@ public:
     bool eventFilter(QObject* obj, QEvent* e);
     void paintEvent(QPaintEvent* e);
     void reshow();
+    void del();
 
 private slots:
     void on_ExitButton_clicked();

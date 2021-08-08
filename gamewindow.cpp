@@ -16,7 +16,7 @@ GameWindow::GameWindow(QWidget *parent, Widget *last) :
 {
     ui->setupUi(this);
     ui->ReturnButton->installEventFilter(this);
-    this->setAttribute(Qt::WA_DeleteOnClose,1);
+    //setAttribute(Qt::WA_DeleteOnClose,1);
 
     //自适应窗口大小设置，可适应多分辨率
     QScreen* screen = QGuiApplication::primaryScreen();
@@ -44,18 +44,19 @@ GameWindow::GameWindow(QWidget *parent, Widget *last) :
     chessboard->installEventFilter(this);
 
     //模式提示label
-    label.setText(tr("模式：人机模式，玩家执黑"));
+    label = new QLabel();
+    label->setText(tr("模式：人机模式，玩家执黑"));
     rect = chessboard->geometry();
     QPoint point = rect.topLeft();
-    int temp_width = label.width();
-    int temp_height = label.height();
-    label.setGeometry(point.x(),point.y(),temp_width,temp_height);
+    int temp_width = label->width();
+    int temp_height = label->height();
+    label->setGeometry(point.x(),point.y(),temp_width,temp_height);
 
     //设置layout
-    layout->addWidget(&label);
+    layout->addWidget(label);
     layout->addWidget(chessboard);
     layout->setStretch(0,1);
-    label.setMaximumHeight(30);
+    label->setMaximumHeight(30);
     layout->setStretch(1,10);
 
     //默认模式
@@ -114,7 +115,11 @@ bool GameWindow::eventFilter(QObject *obj, QEvent *e)
 void GameWindow::on_ReturnButton_clicked()
 {
     close();
-    widget->reshow();
+    if(widget)
+    {
+        widget->reshow();
+        //widget->del();
+    }
 }
 
 
@@ -147,18 +152,18 @@ void GameWindow::on_ExitButton_clicked()
 
 void GameWindow::on_hh_action_triggered()
 {
-    label.setText(tr("模式：人人对战"));
+    label->setText(tr("模式：人人对战"));
 }
 
 
 void GameWindow::on_h_black_triggered()
 {
-    label.setText(tr("模式：人机模式，玩家执黑"));
+    label->setText(tr("模式：人机模式，玩家执黑"));
 }
 
 
 void GameWindow::on_h_white_triggered()
 {
-    label.setText(tr("模式：人机模式，玩家执白"));
+    label->setText(tr("模式：人机模式，玩家执白"));
 }
 

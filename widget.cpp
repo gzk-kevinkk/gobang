@@ -169,8 +169,11 @@ Widget::paintEvent(QPaintEvent *)
 void
 Widget::game_window_open()
 {
-    game_window = new GameWindow(nullptr,this);
+    if(game_window==nullptr)
+        game_window = new GameWindow(nullptr,this);
     game_window->show();
+    game_window->chessboard->clear_board();
+    game_window->chessboard->repaint();
     close();
 }
 
@@ -189,6 +192,12 @@ Widget::reshow()
 
     setGeometry(screen_width/2,(screen_height-widget_height)/2,
                 widget_width,widget_height);
+    if(register_window)
+        delete(register_window);
+    register_window = nullptr;
+//    if(game_window)
+//        delete(game_window);
+//    game_window = nullptr;
     show();
 #if 0
     //game_window = nullptr;
@@ -224,7 +233,14 @@ void Widget::on_RegisterButton_clicked()
     close();
 }
 
-
+void Widget::del()
+{
+    if(game_window)
+    {
+        delete game_window;
+        game_window = nullptr;
+    }
+}
 
 
 void Widget::on_TouristButton_clicked()

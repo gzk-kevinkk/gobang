@@ -50,7 +50,7 @@ private:
     int mode; // 人机（玩家黑）0  人机（玩家白）1  人人 2
     //ActionGroup
     QActionGroup* action_group;
-    QLabel label;
+    QLabel* label;
     //Player
     Player* player_black;
     Player* player_white;

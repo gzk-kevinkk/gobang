@@ -19,6 +19,7 @@ public:
     void get_dis(int dis);
     void get_player(Player*,Player*);
     void judge(); //判断胜负
+    void clear_board();
 
 signals:
     void game_over();
@@ -56,7 +57,7 @@ private:
     void generate_board();
     void mouseMoveEvent(QMouseEvent*);
     void mousePressEvent(QMouseEvent*);
-    void clear_board();
+
     int find_chess(int x,int y,int dir);
 };
 

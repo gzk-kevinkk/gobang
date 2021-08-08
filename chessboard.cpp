@@ -1,5 +1,6 @@
 #include "chessboard.h"
 #include <iostream>
+#include <QMessageBox>
 
 ChessBoard::ChessBoard(QWidget *parent) : QWidget(parent)
 {
@@ -170,6 +171,8 @@ void ChessBoard::mousePressEvent(QMouseEvent* )
             cur_chess_x = cur_x_i;
             cur_chess_y = cur_y_i;
             board[cur_x_i][cur_y_i]=1;
+            cnt++;
+            update();
             judge();
             if(!over)
                 player_white->start();
@@ -180,12 +183,12 @@ void ChessBoard::mousePressEvent(QMouseEvent* )
             cur_chess_x = cur_x_i;
             cur_chess_y = cur_y_i;
             board[cur_x_i][cur_y_i]=2;
+            cnt++;
+            update();
             judge();
             if(!over)
                 player_black->start();
         }
-        cnt++;
-        update();
     }
 #if 0
     cur_x = e->x();
@@ -208,6 +211,9 @@ void ChessBoard::clear_board()
     over = true;
     dropEnable = false;
     dropFlag = false;
+    cur_chess_x = -1;
+    cur_chess_y = -1;
+    emit game_over();
 }
 
 void ChessBoard::get_player(Player* black, Player* white)
